@@ -68,9 +68,4 @@ Before diving into the development tasks, ensure you have the following componen
 6. Perform thorough testing of all implemented functionality.
 7. Prepare the web application for Docker deployment according to the provided instructions in the docker-compose.yml file.
 
-## Conclusion
-
-Congratulations on completing the Lottery Web Application development tasks! This README should guide you through setting up the environment, understanding the project structure, and implementing the required functionality. If you encounter any issues or have questions, refer to the provided resources or seek assistance from the project team. Good luck with your development journey!
-
-
 
