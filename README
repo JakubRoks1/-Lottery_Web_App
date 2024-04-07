@@ -1,96 +1,76 @@
-## Software Application
+# Lottery Web Application README
 
-University has decided to set up a Lottery scheme to raise money for local charities and has started to develop a prototype **Lottery Web Application**. As a software security specialist, the university have asked you to help develop their prototype by **designing and implementing** some basic **functionality and security elements**.
+## Introduction
 
-&nbsp;
+Welcome to the Lottery Web Application README. This document serves as a guide for developers to set up, understand, and extend the functionality of the Lottery Web Application prototype. The application is intended to facilitate a lottery scheme to raise funds for local charities. As a developer, you will find instructions for setting up the development environment, understanding the project structure, and implementing various tasks to enhance both functionality and security features.
 
-### Lottery Web Application
+## Development Environment Setup
 
-The university development team have already implemented a basic Java web application which they have provided for you for further development. The web application consists of the following elements:
+Before diving into the development tasks, ensure you have the following components set up:
 
-- **Java web application**
-- **Apache Tomcat Server**
-- **MySqL Database**
+1. **Java Development Kit (JDK)**: Install JDK suitable for your operating system.
+2. **IntelliJ IDEA**: This is the recommended IDE for Java development. Import the provided project into IntelliJ IDEA.
+3. **Docker**: Install Docker to run the application in containers.
+4. **Apache Tomcat Server**: The application utilizes Apache Tomcat Server.
+5. **MySQL Database**: Ensure MySQL Database is accessible for storing user data.
 
-Because the web application is a prototype, the university development team would like your final submitted program to run using **Docker** to enable them to test it before investing in the hardware and software needed to host the final product. A video showing how to set up and run the software is provided below.
+## Task 0 - Initial Task
 
-&nbsp;
+1. Open the Java project in IntelliJ IDEA and familiarize yourself with its structure and code.
+2. Review the provided README and associated files.
+3. Set up and test the web application using one of the recommended development setups:
+   - Full Docker
+   - Hybrid
+   - Full Local
 
-### PROJECT JAVA CODE
+## Task 1 - Data Input
 
-The university development team have uploaded the all the files you need to get started in a zip file for you [here](https://ncl.instructure.com/courses/24641/files/3277301/download?wrap=1). The folder _LotteryWebApp_ is the Java Web Application project which can be opened and worked on in the IntelliJ IDEA.
+### Redesign Home Page (index.jsp)
 
-Currently the _LotteryWebApp_ project consists of the following:
+- Create or extend a registration form for new users.
+  - Collect first name, last name, email, phone number, username, and password.
+  - Implement client-side input validation using JavaScript or JQuery.
+  - Ensure valid email format and phone number format.
+  - Define password criteria: 8-15 characters, 1 uppercase, 1 lowercase, 1 digit.
+- Update the login form for existing users.
+  - Implement client-side input validation.
+  - Modify the UserLogin servlet to verify login credentials.
 
-- **_index.jsp -_** An HTML/JSP home page with a basic form to input data.
-- **_CreateAccount -_** A Java servlet which:
-  - executes when the home page form data is submitted
-  - inserts data into a MySQL database table **_userAccounts_**
-  - outputs a 'success' message to a **_account.jsp_** HTML/JSP page
-  - outputs an 'error' message to the **_error.jsp_** HTML/JSP page
-- **_account.jsp -_** An HTML/JSP page which  
-  - displays the 'success' from the **_CreateAccount_** servlet
-  - contains a submit button to get all current data in the database
-- **_UserLogin -_** Another Java servlet which:
-  - executes when the HTML page button is pressed on the page **_account.jsp_**
-  - queries a MySQL database table **_userAccounts_** for all its data
-  - outputs the data retrieved from the MySQL database to an HTML/JSP page **_output.jsp_**
-- **_output.jsp -_** An HTML/JSP page which displays the data retrieved from the database in a table and a link back to the home page **_index.jsp_**
-- **_error.jsp -_** An HTML/JSP page which displays the 'error' from the **_CreateAccount_** servlet and a link back to the home page **_index.jsp_**
+### Server-Side Filter (Servlet Filter)
 
-&nbsp;
+- Create a filter to sanitize data submitted via the registration form.
+- Check for forbidden characters and keywords.
+- Display appropriate messages based on the filter results.
 
-### DOCKER CONTAINER IMAGES
+## Task 2 - Data Creation & Storage
 
-Inside the Coursework zip file you will find a README with instructions to get the web app running for different options. There are several options when developing:
+1. Extend the CreateAccount servlet to hash user passwords and update the database schema accordingly.
+2. Update the accounts.jsp page to display user information and allow users to enter lottery numbers.
+3. Implement AddUserNumbers and GetUserNumbers servlets to handle user lottery number submissions and retrieval.
+4. Enhance the accounts.jsp page to display user lottery numbers.
 
-- **Docker only:** Run tomcat server with web app deployed and MySQL database server in Docker
-- **Localhost and Docker:** Run tomcat server with web app deployed on localhost (your computer) and MySQL database server in Docker
-- **Localhost:** Run tomcat server with web app deployed and MySQL database server on localhost
+## Task 3 - Data Access
 
-I would recommend either of the bottom two options if you can when developing.
+1. Implement login attempt limiting to 3 attempts.
+2. Create an admin home page (admin_home.jsp) for viewing user account details.
+3. Implement Role-Based Access Control (RBAC) with roles for admin and public users.
+4. Generate random winning lottery numbers and store them appropriately.
+5. Enable users to check their lottery numbers against the winning numbers.
+6. Ensure proper access modifiers are used in the Java code.
 
-When making final submission, please make sure it is set up to run on **Docker only**. Instructions are in the README file (**I will also run through this in an online session**).
+## Task 4 - Finishing Touches
 
-### Development Tasks
+1. Modify the accounts.jsp page to remove user lottery numbers after a winning draw.
+2. Extend the application to clean up user files when the application is closed.
+3. Refactor and tidy up code structure.
+4. Add comments to enhance code readability.
+5. Remove redundant code.
+6. Perform thorough testing of all implemented functionality.
+7. Prepare the web application for Docker deployment according to the provided instructions in the docker-compose.yml file.
 
-You will be given a number of tasks to develop the Lottery Web Application some more to add both general functionality and security features.
+## Conclusion
 
-&nbsp;
+Congratulations on completing the Lottery Web Application development tasks! This README should guide you through setting up the environment, understanding the project structure, and implementing the required functionality. If you encounter any issues or have questions, refer to the provided resources or seek assistance from the project team. Good luck with your development journey!
 
-#### Task 0 - Initial Task
-
-- **Open** Java project in IntelliJ and familiarise yourself with its structure and code
-- **Look** at the README and associated files and familiarise yourself with them
-- **Set up** and test the web application you have been given
-- You can use any development setup you like:
-  - **Full Docker** \- Apache Tomcat Server and MySQL Database Server both running on Docker
-  - **Hybrid** - Local installation of Apache Tomcat Server running on own computer with MySQL Database Server running on Docker (my personal favourite)
-  - **Full Local** - Local installation of Apache Tomcat Server and MySQL Database Server running on own computer
-
-&nbsp;
-
-#### Task 1 - Data Input
-
-1. **Redevelop** the home page **index.jsp**.
-    1. **Create/extend** a registration form for new users which accepts first name, last name, email, phone number, username, and password.
-        1. Implement appropriate client side input validation using pure JavaScript or the JavaScript library JQuery.
-        2. Email must be a valid email address (look up standards on this).
-        3. Phone number must be of the form xx-xxxx-xxxxxxx (e.g. 44-0191-1234567)
-        4. Password must contain:
-            - Between 8 and 15 characters
-            - At least 1 uppercase and 1 lowercase character
-            - At least 1 digit
-    2. **Create/extend** a login form for existing users which accepts a username and password
-        1. Implement appropriate client side input validation using pure JavaScript or the JavaScript library JQuery.
-        2. Redevelop the Java servlet **UserLogin** to query the MySQL database table **_userAccounts_** to check if password and username match with an existing account.
-            - If login is verified the web application displays a 'login success' message on the **account.jsp** page
-            - If login is not verified the web application returns an 'login unsuccessful' message on the **error.jsp** page
-2. **Create** a server side filter (Servlet Filter)**:**
-    1. Ensure the following are not present in the data submitted via the registration form: &lt;,  &gt;,  !,  {,  } , insert, into, where, script, delete, input.
-        1. If not present the web application displays a 'success' message on the **account.jsp** page
-        2. If present the web application displays an 'error' message on the **error.jsp** page
-
-...
 
 
